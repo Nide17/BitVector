@@ -71,10 +71,10 @@ int main(int argc, char** argv) {
 
 	auto start = std::chrono::high_resolution_clock::now();
 
-	char inputPath[1024], outputPath[1024];
+	// char inputPath[1024], outputPath[1024];
 	sprintf(inputPath, "%s", argv[1]);
 	sprintf(outputPath, "%s", argv[2]);
-	BitVector::testWithFile(inputPath, outputPath);
+	BitVector::processFile(inputPath, outputPath);
 
 	char path[6] = {"/tmp/"};
 	//BitVector::generateTestCases(path);
