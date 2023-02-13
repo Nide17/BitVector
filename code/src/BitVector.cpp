@@ -3,7 +3,6 @@
  *      Author: kompalli
  */
 #include "BitVector.h"
-#include <map>
 
 int BitVector::readNextItemFromFile(FILE *inputFileStream)
 {
