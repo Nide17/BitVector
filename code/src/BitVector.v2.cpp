@@ -4,7 +4,6 @@
  */
 #include "BitVector.h"
 
-// IMPLEMENTATION OF BitArray CLASS
 // CONSTRUCTOR - IMPLEMENT THE BitArray CLASS FROM BitVector.h
 BitArray::BitArray(int numberOfBitsNeeded)
 {
@@ -31,82 +30,7 @@ bool BitArray::getBit(int locationOfBit)
 	return this->bits[locationOfBit];
 }
 
-// IMPLEMENTATION OF THE LinkedList
-// CONSTRUCTOR
-LinkedList::LinkedList()
-{
-	this->head = NULL;
-}
-
-// ADD A NODE TO THE LINKED LIST
-void LinkedList::addNode(int start, int end, BitArray *bitArray)
-{
-	// CREATE A NEW NODE
-	Node *newNode = new Node();
-	// SET THE START, END, BITARRAY AND NEXT NODE
-	newNode->start = start;
-	newNode->end = end;
-	newNode->bitArray = bitArray;
-	newNode->next = NULL;
-
-	// IF THE HEAD IS NULL, SET THE HEAD TO THE NEW NODE
-	if (this->head == NULL)
-		this->head = newNode;
-
-	// ELSE, TRAVERSE THE LINKED LIST AND ADD THE NEW NODE TO THE END
-	else
-	{
-		Node *currentNode = this->head; // SET THE CURRENT NODE TO THE HEAD
-
-		// TRAVERSE THE LINKED LIST UNTIL THE NEXT NODE IS NULL
-		while (currentNode->next != NULL)
-			currentNode = currentNode->next; // SET THE CURRENT NODE TO THE NEXT NODE
-
-		// ADD THE NEW NODE TO THE END OF THE LINKED LIST
-		currentNode->next = newNode;
-	}
-}
-
-// INSERT A NUMBER IN RESPECTIVE BIT ARRAY
-bool LinkedList::isInsertedSeen(int number)
-{
-	// TRAVERSE THE LINKED LIST
-	Node *currentNode = this->head; // SET THE CURRENT NODE TO THE HEAD
-	while (currentNode != NULL)
-	{
-		// IF THE NUMBER IS IN THE RANGE OF THE CURRENT NODE, SET THE BIT AT THE LOCATION OF THE NUMBER TO 1
-		if (number >= currentNode->start && number <= currentNode->end)
-		{
-			// IF THE BIT IS ALREADY SET, JUST RETURN TRUE
-			if (currentNode->bitArray->getBit(number - currentNode->start))
-			{
-				return true;
-			}
-			// ELSE, SET THE BIT TO 1 AND RETURN 0
-			else
-			{
-				currentNode->bitArray->setBit(number - currentNode->start, true);
-				return false;
-			}
-		}
-		// ELSE, MOVE TO THE NEXT NODE
-		currentNode = currentNode->next;
-	}
-}
-
-// DESTRUCTOR
-LinkedList::~LinkedList()
-{
-	Node *currentNode = this->head;
-	while (currentNode != NULL)
-	{
-		Node *nextNode = currentNode->next;
-		delete currentNode->bitArray;
-		delete currentNode;
-		currentNode = nextNode;
-	}
-}
-
+// IMPLEMENTATION OF THE BitVector CLASS FROM BitVector.h
 int BitVector::readNextItemFromFile(FILE *inputFileStream)
 {
 	if (!inputFileStream)
@@ -184,22 +108,8 @@ int BitVector::processFile(char *inputFilePath, char *outputFilePath)
 	// READ THE INPUT FILE UNTIL EOF IS REACHED
 	try
 	{
-		// CREATE A LINKED LIST TO STORE THE NODES WITH START, END, BITARRAY AND NEXT NODE INFORMATION OF EACH NODE IN THE LINKED LIST
-		LinkedList *linkedList = new LinkedList();
-
-		// CONNECT NODES OF 983055 SIZE EACH, IN THE RANGE -2147483648 AND 2147483647
-		for (int i = -2147483648; i <= 2147483647; i += 983055)
-		{
-			// CREATE A BIT ARRAY OF SIZE 983055
-			BitArray *bitArray = new BitArray(983055);
-
-			// ADD A NODE WITH START, END, BITARRAY AND NEXT NODE INFORMATION
-			linkedList->addNode(i, i + 983054, bitArray);
-
-			// IF THE END OF THE RANGE IS REACHED, BREAK THE LOOP
-			if (i > 2147483647 - 983055)
-				break;
-		}
+		// CREATING A POINTER TO THE BIT ARRAY OF SIZE MILLION - USING THE BitArray CLASS
+		BitArray *bitArray = new BitArray(1000000);
 
 		// READING THE INPUT FILE UNTIL EOF IS REACHED
 		while (true)
@@ -213,12 +123,22 @@ int BitVector::processFile(char *inputFilePath, char *outputFilePath)
 			if (feof(inFileStream))
 				break;
 
-			// INSERT THE NUMBER IN THE RESPECTIVE BIT ARRAY OF THE NODE, PRINT TO FILE
-			if(linkedList->isInsertedSeen(number))
+			// CHECKING IF THE BIT IS ALREADY SET AT THE LOCATION number + 500000
+			if (bitArray->getBit(number + 500000))
+				// IF THE BIT IS SET(NUMBER WAS SEEN BEFORE), THEN PRINT 0 TO THE OUTPUT FILE
 				fprintf(outFileStream, "%d\n", 0);
+
 			else
+			{
+				// IF THE BIT IS NOT SET(NUMBER IS NOT SEEN BEFORE), THEN PRINT 1 TO THE OUTPUT FILE
 				fprintf(outFileStream, "%d\n", 1);
+				// SET THE BIT AT THE LOCATION number + 500000
+				bitArray->setBit(number + 500000, true);
+			}
 		}
+
+		// FREEING THE MEMORY ALLOCATED TO THE bitArray POINTER
+		delete bitArray;
 	}
 
 	catch (std::invalid_argument &e)

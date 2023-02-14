@@ -14,8 +14,8 @@
 #include "util/GetMemUsage.h"
 #include "util/LogManager.h"
 
-class BitArray{
-	
+class BitArray
+{
 	// MEMBER VARIABLES
 private:
 	// NUMBER OF BITS NEEDED TO REPRESENT THE INPUT LINE IN AN ARRAY OF BOOLS
@@ -23,51 +23,76 @@ private:
 	// POINTER TO ARRAY OF BOOLS TO REPRESENT THE INPUT LINES
 	bool *bits;
 
-
 public:
 	BitArray(int numberOfBitsNeeded);
 
 	/**
 	 *  Set the value of the bit at a specific location.
 	 */
-    void setBit(int locationOfBit, bool bitValue);
+	void setBit(int locationOfBit, bool bitValue);
 
-    /**
-     *  Get the value of the bit at a specific location.
-     */
-    bool getBit(int locationOfBit);
+	/**
+	 *  Get the value of the bit at a specific location.
+	 */
+	bool getBit(int locationOfBit);
 };
 
+// NODE CLASS FOR STORING BitArray OBJECTS AND POINTERS TO NEXT NODE
+class Node
+{
+public:
+	Node *next;
+	BitArray *bitArray;
+	int start;
+	int end;
+};
 
-class BitVector{
+// LINKED LIST OF NODES AND
+class LinkedList
+{
+public:
+	Node *head;
+	LinkedList();
+	void addNode(int start, int end, BitArray *bitArray);
+	// INSERT A NUMBER IN RESPECTIVE BIT ARRAY
+	bool isInsertedSeen(int number);
+
+	~LinkedList();
+};
+
+class BitVector
+{
 	/**
 	 * This function must take as input a file stream that is open, read the next line
 	 * and return an integer if it is valid.
 	 *
-        a. If there are any lines with no inputs, those lines must be skipped.
-        b. If there are any lines that contain a non-integer input, those lines must be skipped.
- 	 	 If end of file is reached, it must throw an end of file error
+		a. If there are any lines with no inputs, those lines must be skipped.
+		b. If there are any lines that contain a non-integer input, those lines must be skipped.
+		 If end of file is reached, it must throw an end of file error
 	 */
-	static int readNextItemFromFile(FILE* inputFileStream);
+	static int readNextItemFromFile(FILE *inputFileStream);
 	/**
 	 *
 	 */
-	static char generateRandomWhiteSpace(){
+	static char generateRandomWhiteSpace()
+	{
 		const char charArray[3] = {' ', '\n', '\t'};
-		int selectedIndx = rand()%(2);
+		int selectedIndx = rand() % (2);
 		return charArray[selectedIndx];
 	};
 
 	/**
 	 * Generate a string of random length
 	 */
-	static std::string genRandomString(int len) {
-		char randomStr[len+1];
-		for (size_t i = 0; i < len; ++i) {
-			int randomChar = rand()%(26+26+10);
+	static std::string genRandomString(int len)
+	{
+		char randomStr[len + 1];
+		for (size_t i = 0; i < len; ++i)
+		{
+			int randomChar = rand() % (26 + 26 + 10);
 			if (randomChar < 26)
 				randomStr[i] = ('a' + randomChar);
-			else if (randomChar < 26+26)
+			else if (randomChar < 26 + 26)
 				randomStr[i] = ('A' + randomChar - 26);
 			else
 				randomStr[i] = ('0' + randomChar - 26 - 26);
@@ -80,20 +105,23 @@ class BitVector{
 	/**
 	 * Get a random int value between INT_MIN and INT_MAX
 	 */
-	static int genRandomInt() {
-	    const int bitsNeededForRAND_MAX = (int)(log2(RAND_MAX/2 + 1) + 1.0); /* Or log(RAND_MAX + 1) / log(2) with older language standards */
-	    int ret = 0;
-	    for (int i = 0; i < sizeof(int) * CHAR_BIT; i += bitsNeededForRAND_MAX) {
-	        ret <<= bitsNeededForRAND_MAX;
-	        ret |= rand();
-	    }
-	    return ret;
+	static int genRandomInt()
+	{
+		const int bitsNeededForRAND_MAX = (int)(log2(RAND_MAX / 2 + 1) + 1.0); /* Or log(RAND_MAX + 1) / log(2) with older language standards */
+		int ret = 0;
+		for (int i = 0; i < sizeof(int) * CHAR_BIT; i += bitsNeededForRAND_MAX)
+		{
+			ret <<= bitsNeededForRAND_MAX;
+			ret |= rand();
+		}
+		return ret;
 	}
 
 	/**
 	 * Generate a random integer between min and max.
 	 */
-	static int getRandomInt(int min, int max){
+	static int getRandomInt(int min, int max)
+	{
 		if (min == max)
 			return min;
 		if (min == INT_MIN && max == INT_MAX)
@@ -102,12 +130,14 @@ class BitVector{
 			return genRandomInt();
 
 		int range = max - min + 1;
-		if (min > max){
+		if (min > max)
+		{
 			range = min - max + 1;
 		}
 		static bool first = true;
-		if (first){
-			srand( time(NULL) ); //seeding for the first time only!
+		if (first)
+		{
+			srand(time(NULL)); // seeding for the first time only!
 			first = false;
 		}
 
@@ -115,38 +145,43 @@ class BitVector{
 		int withinRangeNum = (randomNumber % range);
 		int value = min + withinRangeNum;
 		LogManager::writePrintfToLog(LogManager::Level::Status,
-				"BitVector::getRandomInt", "1 randomNumber=%d, min=%d, max=%d, range=%d, value=%d", randomNumber, min, max, range, value);
+									 "BitVector::getRandomInt", "1 randomNumber=%d, min=%d, max=%d, range=%d, value=%d", randomNumber, min, max, range, value);
 
 		// Under some conditions, it is possible that value is not within min and max.
 		// for example, if (withinRangeNum < 0 && min < 0)
-		if (false){
-			if (value < min || value > max){
+		if (false)
+		{
+			if (value < min || value > max)
+			{
 				value = getRandomInt(min, max);
 				return value;
 			}
-		}else{
+		}
+		else
+		{
 			int indx = 2;
 			LogManager::writePrintfToLog(LogManager::Level::Status,
-				"BitVector::getRandomInt", "1 withinRangeNum=%d", withinRangeNum);
+										 "BitVector::getRandomInt", "1 withinRangeNum=%d", withinRangeNum);
 
 			if (withinRangeNum < 0 && min < 0)
 				withinRangeNum = withinRangeNum * -0.5;
 
-			while (value < min || value > max){
+			while (value < min || value > max)
+			{
 				withinRangeNum = (min + withinRangeNum + max) / indx++;
 				value = min + withinRangeNum;
 				if (indx == 10)
 					indx = 2;
 				LogManager::writePrintfToLog(LogManager::Level::Status,
-					"BitVector::getRandomInt", "1 withinRangeNum=%d, min=%d, max=%d, indx=%d, value=%d", withinRangeNum, min, max, indx, value);
+											 "BitVector::getRandomInt", "1 withinRangeNum=%d, min=%d, max=%d, indx=%d, value=%d", withinRangeNum, min, max, indx, value);
 			}
 			return value;
 		}
 
 		LogManager::writePrintfToLog(LogManager::Level::Status,
-				"BitVector::getRandomInt", "randomNumber=%d, min=%d, max=%d, range=%d, value=%d", randomNumber, min, max, range, value);
+									 "BitVector::getRandomInt", "randomNumber=%d, min=%d, max=%d, range=%d, value=%d", randomNumber, min, max, range, value);
 		LogManager::writePrintfToLog(LogManager::Level::Status,
-				"BitVector::getRandomInt", "%d+ (%d mod %d)\n", min, randomNumber, range);
+									 "BitVector::getRandomInt", "%d+ (%d mod %d)\n", min, randomNumber, range);
 		return value;
 	};
 	/**
@@ -154,7 +189,7 @@ class BitVector{
 	 *
 	 * @param outputFilePath Path of the output file.
 	 */
-	static int generateTestCases(char* outputFilePath, int min, int max, int numberOfEntries, int errorTypes);
+	static int generateTestCases(char *outputFilePath, int min, int max, int numberOfEntries, int errorTypes);
 
 public:
 	/**
@@ -167,13 +202,13 @@ public:
 	 * If the input file cannot be read throw an error of type ios_base::failure
 	 * If the output file cannot be generated, then throw an error of type ios_base::failure
 	 */
-	static int processFile(char* inputFilePath, char* outputFilePath);
+	static int processFile(char *inputFilePath, char *outputFilePath);
 	/**
 	 * This is the entry level function to generate test cases for HW02.
 	 *
 	 * @param outputFilePath Path of the output file.
 	 */
-	static int generateTestCases(char* outputFilePath);
+	static int generateTestCases(char *outputFilePath);
 };
 
 #endif /* BITVECT_H_ */
