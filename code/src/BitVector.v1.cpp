@@ -4,33 +4,6 @@
  */
 #include "BitVector.h"
 
-// CONSTRUCTOR - IMPLEMENT THE BitArray CLASS FROM BitVector.h
-BitArray::BitArray(int numberOfBitsNeeded)
-{
-	// SETTING THE NUMBER OF BITS NEEDED TO REPRESENT THE INPUT LINE IN AN ARRAY OF BOOLS
-	this->numberOfBitsNeeded = numberOfBitsNeeded;
-
-	// CREATING AN ARRAY OF BOOLS TO REPRESENT THE INPUT LINES
-	this->bits = new bool[numberOfBitsNeeded];
-
-	// INITIALIZE THE BITS ARRAY WITH ALL ZEROS - USING THE memset FUNCTION
-	memset(this->bits, 0, numberOfBitsNeeded);
-}
-
-// GETTERS & SETTERS
-// SET THE VALUE OF THE BIT AT A SPECIFIC LOCATION IN THE BOOLS ARRAY
-void BitArray::setBit(int locationOfBit, bool bitValue)
-{
-	this->bits[locationOfBit] = bitValue;
-}
-
-// GET THE BIT AT THE GIVEN LOCATION IN THE BOOLS ARRAY
-bool BitArray::getBit(int locationOfBit)
-{
-	return this->bits[locationOfBit];
-}
-
-// IMPLEMENTATION OF THE BitVector CLASS FROM BitVector.h
 int BitVector::readNextItemFromFile(FILE *inputFileStream)
 {
 	if (!inputFileStream)
@@ -62,7 +35,7 @@ int BitVector::readNextItemFromFile(FILE *inputFileStream)
 			// IF THE LINE HAS SPACE IN-BETWEEN CONTENTS, SKIP THE LINE
 			if (sscanf(lineBuffer, "%d %s", &part1, part2) != 1)
 				continue;
-
+				
 			// IF THE LINE CAN BE CONVERTED TO INTEGER, STORE THE INTEGER IN number
 			if (sscanf(lineBuffer, "%d", &number) == 1)
 				returnInteger = number;
@@ -108,8 +81,8 @@ int BitVector::processFile(char *inputFilePath, char *outputFilePath)
 	// READ THE INPUT FILE UNTIL EOF IS REACHED
 	try
 	{
-		// CREATING A POINTER TO THE BIT ARRAY OF SIZE MILLION - USING THE BitArray CLASS
-		BitArray *bitArray = new BitArray(1000000);
+		// DEFINING AN ARRAY OF 2 * 2147483648 + 1 VALUES
+		bool *elementsPresent = new bool[2 * 2147483648 + 1];
 
 		// READING THE INPUT FILE UNTIL EOF IS REACHED
 		while (true)
@@ -123,22 +96,19 @@ int BitVector::processFile(char *inputFilePath, char *outputFilePath)
 			if (feof(inFileStream))
 				break;
 
-			// CHECKING IF THE BIT IS ALREADY SET AT THE LOCATION X + 500000
-			if (bitArray->getBit(number + 500000))
-				// IF THE BIT IS SET(NUMBER WAS SEEN BEFORE), THEN PRINT 0 TO THE OUTPUT FILE
-				fprintf(outFileStream, "%d\n", 0);
-
-			else
+			// CHECK IF THE INTEGER IS ALREADY SEEN OR NOT
+			if (elementsPresent[number + 2147483648] == 0)
 			{
-				// IF THE BIT IS NOT SET(NUMBER IS NOT SEEN BEFORE), THEN PRINT 1 TO THE OUTPUT FILE
+				// INTEGER SEEN FOR THE FIRST TIME
+				// PRINT 1 TO THE OUTPUT FILE 
+				// SET THE ARRAY ELEMENT AT INDEX “k + 2147483648” TO TRUE
 				fprintf(outFileStream, "%d\n", 1);
-				// SET THE BIT AT THE LOCATION X + 500000
-				bitArray->setBit(number + 500000, true);
+				elementsPresent[number + 2147483648] = 1;
 			}
+			else
+				// INTEGER ALREADY SEEN, PRINT 0 TO OUTPUT FILE
+				fprintf(outFileStream, "%d\n", 0);
 		}
-
-		// FREEING THE MEMORY ALLOCATED TO THE bitArray POINTER
-		delete bitArray;
 	}
 
 	catch (std::invalid_argument &e)

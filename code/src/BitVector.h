@@ -15,6 +15,15 @@
 #include "util/LogManager.h"
 
 class BitArray{
+	
+	// MEMBER VARIABLES
+private:
+	// NUMBER OF BITS NEEDED TO REPRESENT THE INPUT LINE IN AN ARRAY OF BOOLS
+	int numberOfBitsNeeded;
+	// POINTER TO ARRAY OF BOOLS TO REPRESENT THE INPUT LINES
+	bool *bits;
+
+
 public:
 	BitArray(int numberOfBitsNeeded);
 
