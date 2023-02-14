@@ -123,7 +123,7 @@ int BitVector::processFile(char *inputFilePath, char *outputFilePath)
 			if (feof(inFileStream))
 				break;
 
-			// CHECKING IF THE BIT IS ALREADY SET AT THE LOCATION X + 500000
+			// CHECKING IF THE BIT IS ALREADY SET AT THE LOCATION number + 500000
 			if (bitArray->getBit(number + 500000))
 				// IF THE BIT IS SET(NUMBER WAS SEEN BEFORE), THEN PRINT 0 TO THE OUTPUT FILE
 				fprintf(outFileStream, "%d\n", 0);
@@ -132,7 +132,7 @@ int BitVector::processFile(char *inputFilePath, char *outputFilePath)
 			{
 				// IF THE BIT IS NOT SET(NUMBER IS NOT SEEN BEFORE), THEN PRINT 1 TO THE OUTPUT FILE
 				fprintf(outFileStream, "%d\n", 1);
-				// SET THE BIT AT THE LOCATION X + 500000
+				// SET THE BIT AT THE LOCATION number + 500000
 				bitArray->setBit(number + 500000, true);
 			}
 		}
