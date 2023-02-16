@@ -3,110 +3,56 @@
  *      Author: kompalli
  */
 #include "BitVector.h"
+#define BIT_ARRAY_SIZE 102400
+#define NUMBER_OF_BIT_ARRAYS 41944
+#define MIN_VALUE -2147483648
 
-// IMPLEMENTATION OF BitArray CLASS
-// CONSTRUCTOR - IMPLEMENT THE BitArray CLASS FROM BitVector.h
+/**
+ * IMPLEMENTATION OF THE BitArray CLASS FROM BitVector.h
+ */
+// CONSTRUCTING THE ARRAY OF BITS
+BitArray::BitArray()
+{
+	this->numberOfBitsNeeded = BIT_ARRAY_SIZE;
+	this->bits = new char[BIT_ARRAY_SIZE];
+}
+
 BitArray::BitArray(int numberOfBitsNeeded)
 {
-	// SETTING THE NUMBER OF BITS NEEDED TO REPRESENT THE INPUT LINE IN AN ARRAY OF BOOLS
 	this->numberOfBitsNeeded = numberOfBitsNeeded;
-
-	// CREATING AN ARRAY OF BOOLS TO REPRESENT THE INPUT LINES
-	this->bits = new bool[numberOfBitsNeeded];
-
-	// INITIALIZE THE BITS ARRAY WITH ALL ZEROS - USING THE memset FUNCTION
-	memset(this->bits, 0, numberOfBitsNeeded);
+	this->bits = new char[numberOfBitsNeeded];
 }
 
-// GETTERS & SETTERS
-// SET THE VALUE OF THE BIT AT A SPECIFIC LOCATION IN THE BOOLS ARRAY
-void BitArray::setBit(int locationOfBit, bool bitValue)
+// SETTING THE BIT VALUE
+void BitArray::setBit(int locationOfBit, int bitValue)
 {
-	this->bits[locationOfBit] = bitValue;
+	if (locationOfBit < 0 || locationOfBit >= numberOfBitsNeeded)
+	{
+		char *message = new char[2048];
+		sprintf(message, "Invalid locationOfBitition %d", locationOfBit);
+		throw std::out_of_range(message);
+		delete[] message;
+	}
+
+	bits[locationOfBit] = bitValue;
 }
 
-// GET THE BIT AT THE GIVEN LOCATION IN THE BOOLS ARRAY
+// GETTING THE BIT VALUE
 bool BitArray::getBit(int locationOfBit)
 {
-	return this->bits[locationOfBit];
-}
-
-// IMPLEMENTATION OF THE LinkedList
-// CONSTRUCTOR
-LinkedList::LinkedList()
-{
-	this->head = NULL;
-}
-
-// ADD A NODE TO THE LINKED LIST
-void LinkedList::addNode(int start, int end, BitArray *bitArray)
-{
-	// CREATE A NEW NODE
-	Node *newNode = new Node();
-	// SET THE START, END, BITARRAY AND NEXT NODE
-	newNode->start = start;
-	newNode->end = end;
-	newNode->bitArray = bitArray;
-	newNode->next = NULL;
-
-	// IF THE HEAD IS NULL, SET THE HEAD TO THE NEW NODE
-	if (this->head == NULL)
-		this->head = newNode;
-
-	// ELSE, TRAVERSE THE LINKED LIST AND ADD THE NEW NODE TO THE END
-	else
+	if (locationOfBit < 0 || locationOfBit >= numberOfBitsNeeded)
 	{
-		Node *currentNode = this->head; // SET THE CURRENT NODE TO THE HEAD
-
-		// TRAVERSE THE LINKED LIST UNTIL THE NEXT NODE IS NULL
-		while (currentNode->next != NULL)
-			currentNode = currentNode->next; // SET THE CURRENT NODE TO THE NEXT NODE
-
-		// ADD THE NEW NODE TO THE END OF THE LINKED LIST
-		currentNode->next = newNode;
+		char *message = new char[2048];
+		sprintf(message, "Invalid locationOfBitition %d", locationOfBit);
+		throw std::out_of_range(message);
+		delete[] message;
 	}
+
+	return bits[locationOfBit];
 }
 
-// INSERT A NUMBER IN RESPECTIVE BIT ARRAY
-bool LinkedList::isInsertedSeen(int number)
-{
-	// TRAVERSE THE LINKED LIST
-	Node *currentNode = this->head; // SET THE CURRENT NODE TO THE HEAD
-	while (currentNode != NULL)
-	{
-		// IF THE NUMBER IS IN THE RANGE OF THE CURRENT NODE, SET THE BIT AT THE LOCATION OF THE NUMBER TO 1
-		if (number >= currentNode->start && number <= currentNode->end)
-		{
-			// IF THE BIT IS ALREADY SET, JUST RETURN TRUE
-			if (currentNode->bitArray->getBit(number - currentNode->start))
-			{
-				return true;
-			}
-			// ELSE, SET THE BIT TO 1 AND RETURN 0
-			else
-			{
-				currentNode->bitArray->setBit(number - currentNode->start, true);
-				return false;
-			}
-		}
-		// ELSE, MOVE TO THE NEXT NODE
-		currentNode = currentNode->next;
-	}
-}
-
-// DESTRUCTOR
-LinkedList::~LinkedList()
-{
-	Node *currentNode = this->head;
-	while (currentNode != NULL)
-	{
-		Node *nextNode = currentNode->next;
-		delete currentNode->bitArray;
-		delete currentNode;
-		currentNode = nextNode;
-	}
-}
-
+// -----------------------------------------------------------------------------------------------
+// READING INPUT FROM FILE, LINE BY LINE
 int BitVector::readNextItemFromFile(FILE *inputFileStream)
 {
 	if (!inputFileStream)
@@ -117,7 +63,7 @@ int BitVector::readNextItemFromFile(FILE *inputFileStream)
 		delete[] message;
 	}
 
-	// CODE TO READ LINE BY LINE & RETURN INTEGER
+	// READ LINE BY LINE & RETURN INTEGER IF THE LINE IS VALID
 	int returnInteger;
 
 	// READ ONE LINE AT A TIME FROM THE INPUT FILE - UNTIL EOF IS REACHED
@@ -156,6 +102,7 @@ int BitVector::readNextItemFromFile(FILE *inputFileStream)
 	return returnInteger;
 }
 
+// PROCESSING THE INPUT FILE, LINE BY LINE
 int BitVector::processFile(char *inputFilePath, char *outputFilePath)
 {
 	FILE *inFileStream = fopen(inputFilePath, "r");
@@ -181,24 +128,17 @@ int BitVector::processFile(char *inputFilePath, char *outputFilePath)
 	/*
 	Your code to process a file should be written after these comments.
 	*/
+
 	// READ THE INPUT FILE UNTIL EOF IS REACHED
 	try
 	{
-		// CREATE A LINKED LIST TO STORE THE NODES WITH START, END, BITARRAY AND NEXT NODE INFORMATION OF EACH NODE IN THE LINKED LIST
-		LinkedList *linkedList = new LinkedList();
+		// CREATING A CONTAINING ARRAY OF 41944 BitArray OBJECTS
+		BitArray *bitArrays = new BitArray[NUMBER_OF_BIT_ARRAYS];
 
-		// CONNECT NODES OF 983055 SIZE EACH, IN THE RANGE -2147483648 AND 2147483647
-		for (int i = -2147483648; i <= 2147483647; i += 983055)
+		// INITIALIZE EVERY BitArray OBJECT IN THE CONTAINING ARRAY
+		for (int i = 0; i < NUMBER_OF_BIT_ARRAYS; i++)
 		{
-			// CREATE A BIT ARRAY OF SIZE 983055
-			BitArray *bitArray = new BitArray(983055);
-
-			// ADD A NODE WITH START, END, BITARRAY AND NEXT NODE INFORMATION
-			linkedList->addNode(i, i + 983054, bitArray);
-
-			// IF THE END OF THE RANGE IS REACHED, BREAK THE LOOP
-			if (i > 2147483647 - 983055)
-				break;
+			bitArrays[i] = BitArray(BIT_ARRAY_SIZE); // 102400 BITS PER BitArray OBJECT
 		}
 
 		// READING THE INPUT FILE UNTIL EOF IS REACHED
@@ -213,11 +153,24 @@ int BitVector::processFile(char *inputFilePath, char *outputFilePath)
 			if (feof(inFileStream))
 				break;
 
-			// INSERT THE NUMBER IN THE RESPECTIVE BIT ARRAY OF THE NODE, PRINT TO FILE
-			if(linkedList->isInsertedSeen(number))
-				fprintf(outFileStream, "%d\n", 0);
-			else
+			// FINDING THE INDEX FOR A BitArray THAT CONTAINS THE number FROM THE CONTAINING ARRAY
+			int bitArrayIndex = (number - MIN_VALUE) / BIT_ARRAY_SIZE;
+
+			// FINDING THE INDEX OF THE BIT CORRESPONDING TO THE number IN THE BitArray
+			int bitIndex = (number - MIN_VALUE) % BIT_ARRAY_SIZE;
+
+			// IF THE BIT IS NOT SET, SET THE BIT TO 1 AND WRITE 1 TO THE OUTPUT FILE
+			if (bitArrays[bitArrayIndex].getBit(bitIndex) == 0)
+			{
 				fprintf(outFileStream, "%d\n", 1);
+				bitArrays[bitArrayIndex].setBit(bitIndex, 1);
+			}
+
+			else
+			{
+				// IF THE BIT IS ALREADY SET, WRITE 0 TO THE OUTPUT FILE
+				fprintf(outFileStream, "%d\n", 0);
+			}
 		}
 	}
 
@@ -244,6 +197,7 @@ int BitVector::processFile(char *inputFilePath, char *outputFilePath)
 	fclose(inFileStream);
 }
 
+// GENERATE TEST CASES FOR THE PROGRAM TO TEST THE FUNCTIONALITY
 int BitVector::generateTestCases(char *outputFilePath, int min, int max, int numberOfEntries, int errorTypes)
 {
 	if (false)
@@ -299,6 +253,7 @@ int BitVector::generateTestCases(char *outputFilePath, int min, int max, int num
 	fclose(outFileStream);
 }
 
+// GENERATE TEST CASES FOR THE PROGRAM TO TEST THE FUNCTIONALITY
 int BitVector::generateTestCases(char *outputFolderPath)
 {
 	char filePath[1024];
