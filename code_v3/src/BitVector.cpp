@@ -15,9 +15,6 @@ BitArray::BitArray(int numberOfBitsNeeded)
 
 	// CREATING AN ARRAY OF BOOLS TO REPRESENT THE CURRENT INPUT LINE
 	this->bits = new bool[numberOfBitsNeeded];
-
-	// INITIALIZE THE BITS ARRAY WITH ALL ZEROS - USING THE memset FUNCTION
-	memset(this->bits, 0, numberOfBitsNeeded);
 }
 
 // GETTERS & SETTERS
@@ -58,7 +55,6 @@ Node::~Node()
 }
 
 // -----------------------------------------------------------------------------------------------
-
 /**
  * IMPLEMENTATION OF THE LinkedList CLASS FROM BitVector.h
  */
@@ -100,10 +96,8 @@ bool LinkedList::isSeenBefore(int number)
 	// MAKE THE CURRENT NODE POINT AS THE HEAD OF THE LINKED LIST
 	Node *currentNode = this->head;
 
-	// TRAVERSE THE LINKED LIST UNTIL THE END OF THE LIST IS REACHED
-	while (currentNode->next != NULL)
+	while (currentNode != nullptr)
 	{
-		// IF THE NUMBER IS IN THE RANGE OF THE CURRENT NODE, CHECK IF THE BIT IS SET
 		if (number >= currentNode->start && number <= currentNode->end)
 		{
 			// IF THE BIT IS ALREADY SET, JUST RETURN TRUE
@@ -118,30 +112,20 @@ bool LinkedList::isSeenBefore(int number)
 				return false;
 			}
 		}
-		// IF THE NUMBER IS NOT IN THE RANGE OF THE CURRENT NODE, MOVE TO THE NEXT NODE
 		currentNode = currentNode->next;
 	}
+	return false;
 }
 
 // DESTRUCTOR TO FREE THE MEMORY ALLOCATED FOR THE LINKED LIST
 LinkedList::~LinkedList()
 {
-	Node *currentNode = this->head; // MAKE THE CURRENT NODE POINT AS THE HEAD OF THE LIST
-
-	// TRAVERSE THE LINKED LIST UNTIL THE END OF THE LIST IS REACHED
-	while (currentNode->next != NULL)
+	Node *currentNode = head;
+	while (currentNode != nullptr)
 	{
-		Node *nextNode = currentNode->next; // MAKE THE CURRENT NODE POINT AS THE NEXT NODE
-		delete currentNode->bitArray;		// FREE THE MEMORY ALLOCATED FOR THE BitArray OBJECT
-		delete currentNode;					// FREE THE MEMORY ALLOCATED FOR THE CURRENT NODE
-		currentNode = nextNode;				// MAKE THE CURRENT NODE POINT AS THE NEXT NODE
-
-		// IF THE NEXT NODE IS NULL, FREE THE MEMORY ALLOCATED FOR THE NEXT NODE
-		if (currentNode->next == NULL)
-		{
-			delete currentNode->bitArray; // FREE THE MEMORY ALLOCATED FOR THE BitArray OBJECT
-			delete currentNode;			  // FREE THE MEMORY ALLOCATED FOR THE CURRENT NODE
-		}
+		Node *next = currentNode->next;
+		delete currentNode; // delete Node object
+		currentNode = next;
 	}
 }
 
@@ -229,17 +213,17 @@ int BitVector::processFile(char *inputFilePath, char *outputFilePath)
 		// CREATE A LINKED LIST TO STORE THE NODES WITH START, END, BITARRAY AND NEXT NODE INFORMATION OF EACH NODE IN THE LINKED LIST
 		LinkedList *linkedList = new LinkedList();
 
-		// CREATE A BIT ARRAY OF SIZE 327685
-		BitArray *bitArray = new BitArray(327685);
-
-		// CONNECT NODES OF 327685 SIZE EACH, IN THE RANGE -2147483648 AND 2147483647
-		for (int i = -2147483648; i <= 2147483647; i += 327685)
+		// CONNECT NODES OF 983055 SIZE EACH, IN THE RANGE -2147483648 AND 2147483647
+		for (int i = -2147483648; i <= 2147483647; i += 983055)
 		{
+			// CREATE A BIT ARRAY OF SIZE 983055
+			BitArray *bitArray = new BitArray(983055);
+
 			// ADD A NODE WITH START, END, BITARRAY AND NEXT NODE INFORMATION
-			linkedList->addNode(i, i + 327684, bitArray);
+			linkedList->addNode(i, i + 983054, bitArray);
 
 			// IF THE END OF THE RANGE IS REACHED, BREAK THE LOOP
-			if (i > 2147483647 - 327685)
+			if (i > 2147483647 - 983055)
 				break;
 		}
 
