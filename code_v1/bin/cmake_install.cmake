@@ -1,4 +1,4 @@
-# Install script for directory: /mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code
+# Install script for directory: /mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code_v1
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code/bin/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code_v1/bin/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

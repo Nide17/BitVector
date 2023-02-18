@@ -132,12 +132,13 @@ int BitVector::processFile(char *inputFilePath, char *outputFilePath)
 	// READ THE INPUT FILE UNTIL EOF IS REACHED
 	try
 	{
-		// CREATING A CONTAINING ARRAY OF 41944 BitArray OBJECTS
+		// CREATING A CONTAINING ARRAY OF 41944 BitArrays USING THE DEFAULT CONSTRUCTOR
 		BitArray *bitArrays = new BitArray[NUMBER_OF_BIT_ARRAYS];
 
 		// INITIALIZE EVERY BitArray OBJECT IN THE CONTAINING ARRAY
 		for (int i = 0; i < NUMBER_OF_BIT_ARRAYS; i++)
 		{
+			// CREATING A BitArray OBJECT USING THE PARAMETERIZED CONSTRUCTOR
 			bitArrays[i] = BitArray(BIT_ARRAY_SIZE); // 102400 BITS PER BitArray OBJECT
 		}
 
@@ -153,17 +154,17 @@ int BitVector::processFile(char *inputFilePath, char *outputFilePath)
 			if (feof(inFileStream))
 				break;
 
-			// FINDING THE INDEX FOR A BitArray THAT CONTAINS THE number FROM THE CONTAINING ARRAY
-			int bitArrayIndex = (number - MIN_VALUE) / BIT_ARRAY_SIZE;
+			// FINDING THE INDEX FOR INSIDE BitArray THAT CONTAINS THE number FROM THE CONTAINING
+			int outerBitArrIdx = (number - MIN_VALUE) / BIT_ARRAY_SIZE;
 
-			// FINDING THE INDEX OF THE BIT CORRESPONDING TO THE number IN THE BitArray
-			int bitIndex = (number - MIN_VALUE) % BIT_ARRAY_SIZE;
+			// FINDING THE INDEX OF THE BIT CORRESPONDING TO THE number IN THE INSIDE BitArray
+			int innerBitArrIdx = (number - MIN_VALUE) % BIT_ARRAY_SIZE;
 
 			// IF THE BIT IS NOT SET, SET THE BIT TO 1 AND WRITE 1 TO THE OUTPUT FILE
-			if (bitArrays[bitArrayIndex].getBit(bitIndex) == 0)
+			if (bitArrays[outerBitArrIdx].getBit(innerBitArrIdx) == 0)
 			{
 				fprintf(outFileStream, "%d\n", 1);
-				bitArrays[bitArrayIndex].setBit(bitIndex, 1);
+				bitArrays[outerBitArrIdx].setBit(innerBitArrIdx, 1);
 			}
 
 			else

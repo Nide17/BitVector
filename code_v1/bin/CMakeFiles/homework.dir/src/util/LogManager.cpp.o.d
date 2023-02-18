@@ -1,7 +1,7 @@
 CMakeFiles/homework.dir/src/util/LogManager.cpp.o: \
- /mnt/c/Users/Parmenide/Desktop/CMU/Data\ Structures\ and\ Algorithms\ for\ Engineers/Assignments/Assignment\ 2/BitVector/code/src/util/LogManager.cpp \
+ /mnt/c/Users/Parmenide/Desktop/CMU/Data\ Structures\ and\ Algorithms\ for\ Engineers/Assignments/Assignment\ 2/BitVector/code_v1/src/util/LogManager.cpp \
  /usr/include/stdc-predef.h \
- /mnt/c/Users/Parmenide/Desktop/CMU/Data\ Structures\ and\ Algorithms\ for\ Engineers/Assignments/Assignment\ 2/BitVector/code/src/util/LogManager.h \
+ /mnt/c/Users/Parmenide/Desktop/CMU/Data\ Structures\ and\ Algorithms\ for\ Engineers/Assignments/Assignment\ 2/BitVector/code_v1/src/util/LogManager.h \
  /usr/include/c++/11/stdlib.h /usr/include/c++/11/cstdlib \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \

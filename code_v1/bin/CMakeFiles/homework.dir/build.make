@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code"
+CMAKE_SOURCE_DIR = "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code_v1"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code/bin"
+CMAKE_BINARY_DIR = "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code_v1/bin"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/homework.dir/depend.make
@@ -72,58 +72,58 @@ include CMakeFiles/homework.dir/flags.make
 CMakeFiles/homework.dir/src/BitVector.cpp.o: CMakeFiles/homework.dir/flags.make
 CMakeFiles/homework.dir/src/BitVector.cpp.o: ../src/BitVector.cpp
 CMakeFiles/homework.dir/src/BitVector.cpp.o: CMakeFiles/homework.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code/bin/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/homework.dir/src/BitVector.cpp.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/homework.dir/src/BitVector.cpp.o -MF CMakeFiles/homework.dir/src/BitVector.cpp.o.d -o CMakeFiles/homework.dir/src/BitVector.cpp.o -c "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code/src/BitVector.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code_v1/bin/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/homework.dir/src/BitVector.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/homework.dir/src/BitVector.cpp.o -MF CMakeFiles/homework.dir/src/BitVector.cpp.o.d -o CMakeFiles/homework.dir/src/BitVector.cpp.o -c "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code_v1/src/BitVector.cpp"
 
 CMakeFiles/homework.dir/src/BitVector.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/homework.dir/src/BitVector.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code/src/BitVector.cpp" > CMakeFiles/homework.dir/src/BitVector.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code_v1/src/BitVector.cpp" > CMakeFiles/homework.dir/src/BitVector.cpp.i
 
 CMakeFiles/homework.dir/src/BitVector.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/homework.dir/src/BitVector.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code/src/BitVector.cpp" -o CMakeFiles/homework.dir/src/BitVector.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code_v1/src/BitVector.cpp" -o CMakeFiles/homework.dir/src/BitVector.cpp.s
 
 CMakeFiles/homework.dir/src/homework.cpp.o: CMakeFiles/homework.dir/flags.make
 CMakeFiles/homework.dir/src/homework.cpp.o: ../src/homework.cpp
 CMakeFiles/homework.dir/src/homework.cpp.o: CMakeFiles/homework.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code/bin/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/homework.dir/src/homework.cpp.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/homework.dir/src/homework.cpp.o -MF CMakeFiles/homework.dir/src/homework.cpp.o.d -o CMakeFiles/homework.dir/src/homework.cpp.o -c "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code/src/homework.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code_v1/bin/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/homework.dir/src/homework.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/homework.dir/src/homework.cpp.o -MF CMakeFiles/homework.dir/src/homework.cpp.o.d -o CMakeFiles/homework.dir/src/homework.cpp.o -c "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code_v1/src/homework.cpp"
 
 CMakeFiles/homework.dir/src/homework.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/homework.dir/src/homework.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code/src/homework.cpp" > CMakeFiles/homework.dir/src/homework.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code_v1/src/homework.cpp" > CMakeFiles/homework.dir/src/homework.cpp.i
 
 CMakeFiles/homework.dir/src/homework.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/homework.dir/src/homework.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code/src/homework.cpp" -o CMakeFiles/homework.dir/src/homework.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code_v1/src/homework.cpp" -o CMakeFiles/homework.dir/src/homework.cpp.s
 
 CMakeFiles/homework.dir/src/util/GetMemUsage.cpp.o: CMakeFiles/homework.dir/flags.make
 CMakeFiles/homework.dir/src/util/GetMemUsage.cpp.o: ../src/util/GetMemUsage.cpp
 CMakeFiles/homework.dir/src/util/GetMemUsage.cpp.o: CMakeFiles/homework.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code/bin/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/homework.dir/src/util/GetMemUsage.cpp.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/homework.dir/src/util/GetMemUsage.cpp.o -MF CMakeFiles/homework.dir/src/util/GetMemUsage.cpp.o.d -o CMakeFiles/homework.dir/src/util/GetMemUsage.cpp.o -c "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code/src/util/GetMemUsage.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code_v1/bin/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/homework.dir/src/util/GetMemUsage.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/homework.dir/src/util/GetMemUsage.cpp.o -MF CMakeFiles/homework.dir/src/util/GetMemUsage.cpp.o.d -o CMakeFiles/homework.dir/src/util/GetMemUsage.cpp.o -c "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code_v1/src/util/GetMemUsage.cpp"
 
 CMakeFiles/homework.dir/src/util/GetMemUsage.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/homework.dir/src/util/GetMemUsage.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code/src/util/GetMemUsage.cpp" > CMakeFiles/homework.dir/src/util/GetMemUsage.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code_v1/src/util/GetMemUsage.cpp" > CMakeFiles/homework.dir/src/util/GetMemUsage.cpp.i
 
 CMakeFiles/homework.dir/src/util/GetMemUsage.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/homework.dir/src/util/GetMemUsage.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code/src/util/GetMemUsage.cpp" -o CMakeFiles/homework.dir/src/util/GetMemUsage.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code_v1/src/util/GetMemUsage.cpp" -o CMakeFiles/homework.dir/src/util/GetMemUsage.cpp.s
 
 CMakeFiles/homework.dir/src/util/LogManager.cpp.o: CMakeFiles/homework.dir/flags.make
 CMakeFiles/homework.dir/src/util/LogManager.cpp.o: ../src/util/LogManager.cpp
 CMakeFiles/homework.dir/src/util/LogManager.cpp.o: CMakeFiles/homework.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code/bin/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/homework.dir/src/util/LogManager.cpp.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/homework.dir/src/util/LogManager.cpp.o -MF CMakeFiles/homework.dir/src/util/LogManager.cpp.o.d -o CMakeFiles/homework.dir/src/util/LogManager.cpp.o -c "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code/src/util/LogManager.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code_v1/bin/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/homework.dir/src/util/LogManager.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/homework.dir/src/util/LogManager.cpp.o -MF CMakeFiles/homework.dir/src/util/LogManager.cpp.o.d -o CMakeFiles/homework.dir/src/util/LogManager.cpp.o -c "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code_v1/src/util/LogManager.cpp"
 
 CMakeFiles/homework.dir/src/util/LogManager.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/homework.dir/src/util/LogManager.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code/src/util/LogManager.cpp" > CMakeFiles/homework.dir/src/util/LogManager.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code_v1/src/util/LogManager.cpp" > CMakeFiles/homework.dir/src/util/LogManager.cpp.i
 
 CMakeFiles/homework.dir/src/util/LogManager.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/homework.dir/src/util/LogManager.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code/src/util/LogManager.cpp" -o CMakeFiles/homework.dir/src/util/LogManager.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code_v1/src/util/LogManager.cpp" -o CMakeFiles/homework.dir/src/util/LogManager.cpp.s
 
 # Object files for target homework
 homework_OBJECTS = \
@@ -141,7 +141,7 @@ homework: CMakeFiles/homework.dir/src/util/GetMemUsage.cpp.o
 homework: CMakeFiles/homework.dir/src/util/LogManager.cpp.o
 homework: CMakeFiles/homework.dir/build.make
 homework: CMakeFiles/homework.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code/bin/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable homework"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code_v1/bin/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable homework"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/homework.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -153,6 +153,6 @@ CMakeFiles/homework.dir/clean:
 .PHONY : CMakeFiles/homework.dir/clean
 
 CMakeFiles/homework.dir/depend:
-	cd "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code/bin" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code" "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code" "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code/bin" "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code/bin" "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code/bin/CMakeFiles/homework.dir/DependInfo.cmake" --color=$(COLOR)
+	cd "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code_v1/bin" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code_v1" "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code_v1" "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code_v1/bin" "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code_v1/bin" "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code_v1/bin/CMakeFiles/homework.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/homework.dir/depend
 

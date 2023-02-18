@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code"
+CMAKE_SOURCE_DIR = "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code_v1"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code/bin"
+CMAKE_BINARY_DIR = "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code_v1/bin"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code/bin/CMakeFiles" "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code/bin//CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code_v1/bin/CMakeFiles" "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code_v1/bin//CMakeFiles/progress.marks"
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code/bin/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/Parmenide/Desktop/CMU/Data Structures and Algorithms for Engineers/Assignments/Assignment 2/BitVector/code_v1/bin/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
