@@ -96,18 +96,19 @@ int BitVector::processFile(char *inputFilePath, char *outputFilePath)
 			if (feof(inFileStream))
 				break;
 
-			// CHECK IF THE INTEGER IS ALREADY SEEN OR NOT
-			if (elementsPresent[number + 2147483648] == 0)
+			// CHECK IF THE INTEGER IS ALREADY SEEN OR NOT ONLY IF THE ARRAY BOUNDS ARE NOT EXCEEDED
+			if (number + 2147483648 >= 0 && number + 2147483648 <= 2 * 2147483648)
 			{
-				// INTEGER SEEN FOR THE FIRST TIME
-				// PRINT 1 TO THE OUTPUT FILE 
-				// SET THE ARRAY ELEMENT AT INDEX “k + 2147483648” TO TRUE
-				fprintf(outFileStream, "%d\n", 1);
-				elementsPresent[number + 2147483648] = 1;
+				// IF THE INTEGER IS NOT SEEN BEFORE, SET THE VALUE OF THE ARRAY ELEMENT TO TRUE
+				if (elementsPresent[number + 2147483648] == false)
+				{
+					elementsPresent[number + 2147483648] = true;
+					fprintf(outFileStream, "%d\n", 1);
+				}
+				else {
+					fprintf(outFileStream, "%d\n", 0);
+				}
 			}
-			else
-				// INTEGER ALREADY SEEN, PRINT 0 TO OUTPUT FILE
-				fprintf(outFileStream, "%d\n", 0);
 		}
 	}
 
