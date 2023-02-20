@@ -83,6 +83,7 @@ int BitVector::processFile(char *inputFilePath, char *outputFilePath)
 	{
 		// DEFINING AN ARRAY OF 2 * 2147483648 + 1 VALUES
 		bool *elementsPresent = new bool[2 * 2147483648 + 1];
+		std::fill_n(elementsPresent, 2 * 2147483648 + 1, false);
 
 		// READING THE INPUT FILE UNTIL EOF IS REACHED
 		while (true)
@@ -110,6 +111,9 @@ int BitVector::processFile(char *inputFilePath, char *outputFilePath)
 				}
 			}
 		}
+
+		// Free the memory used by the array
+		delete[] elementsPresent;
 	}
 
 	catch (std::invalid_argument &e)
@@ -128,6 +132,7 @@ int BitVector::processFile(char *inputFilePath, char *outputFilePath)
 			return -1;
 		}
 	}
+	
 
 	fflush(outFileStream);
 	fclose(outFileStream);

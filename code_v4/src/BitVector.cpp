@@ -10,13 +10,14 @@
 /**
  * IMPLEMENTATION OF THE BitArray CLASS FROM BitVector.h
  */
-// CONSTRUCTING THE ARRAY OF BITS
+// CONSTRUCTING THE ARRAY OF BITS WITH SIZE 102400 BITS
 BitArray::BitArray()
 {
 	this->numberOfBitsNeeded = BIT_ARRAY_SIZE;
 	this->bits = new char[BIT_ARRAY_SIZE];
 }
 
+// CONSTRUCTING THE ARRAY OF BITS WITH SIZE numberOfBitsNeeded BITS
 BitArray::BitArray(int numberOfBitsNeeded)
 {
 	this->numberOfBitsNeeded = numberOfBitsNeeded;
@@ -26,6 +27,7 @@ BitArray::BitArray(int numberOfBitsNeeded)
 // SETTING THE BIT VALUE
 void BitArray::setBit(int locationOfBit, int bitValue)
 {
+	// CHECKING IF THE locationOfBit IS VALID (IN RANGE)
 	if (locationOfBit < 0 || locationOfBit >= numberOfBitsNeeded)
 	{
 		char *message = new char[2048];
@@ -34,12 +36,14 @@ void BitArray::setBit(int locationOfBit, int bitValue)
 		delete[] message;
 	}
 
+	// SETTING THE BIT VALUE AT THE locationOfBit
 	bits[locationOfBit] = bitValue;
 }
 
 // GETTING THE BIT VALUE
 bool BitArray::getBit(int locationOfBit)
 {
+	// CHECKING IF THE locationOfBit IS VALID (IN RANGE)
 	if (locationOfBit < 0 || locationOfBit >= numberOfBitsNeeded)
 	{
 		char *message = new char[2048];
@@ -48,6 +52,7 @@ bool BitArray::getBit(int locationOfBit)
 		delete[] message;
 	}
 
+	// RETURNING THE BIT VALUE AT THE locationOfBit
 	return bits[locationOfBit];
 }
 

@@ -37,7 +37,6 @@ BitArray::~BitArray()
 }
 
 // -----------------------------------------------------------------------------------------------
-
 /**
  * IMPLEMENTATION OF THE Node CLASS
  */
@@ -61,7 +60,7 @@ Node::~Node()
 // CONSTRUCTOR - INITIALIZE HEAD NODE TO NULL
 LinkedList::LinkedList()
 {
-	this->head = NULL;
+	this->head = NULL;  // SET THE HEAD NODE TO NULL - EMPTY LINKED LIST
 }
 
 // IMPLEMENT FUNCTION TO ADD A NODE TO THE END OF THE LINKED LIST
@@ -93,7 +92,7 @@ void LinkedList::addNode(int start, int end, BitArray *bitArray)
 // CHECKING AND SETTING THE BIT AT THE LOCATION OF THE NUMBER IN THE BIT ARRAY
 bool LinkedList::isSeenBefore(int number)
 {
-	// MAKE THE CURRENT NODE POINT AS THE HEAD OF THE LINKED LIST
+	// MAKE THE CURRENT NODE POINT TO THE HEAD OF THE LINKED LIST
 	Node *currentNode = this->head;
 
 	while (currentNode != nullptr)
