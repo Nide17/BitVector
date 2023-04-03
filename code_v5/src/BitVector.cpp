@@ -23,6 +23,7 @@ struct bit_array_struct
 		return bit_values[bit_loc];
 	}
 };
+
 /*
 Program that Read from a file that has one integer on each line,
 output a result file which contains a list of the unique integers in this file sorted in increasing order
@@ -99,6 +100,7 @@ int BitVector::readNextItemFromFile(FILE *inputFileStream)
 		return returnInteger;
 	}
 }
+
 
 int BitVector::processFile(char *inputFilePath, char *outputFilePath)
 {
